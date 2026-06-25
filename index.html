@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Selamat Ulang Tahun Sayang ❤️</title>
 
-  <!-- Font lucu dan manis -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -27,7 +26,55 @@
 
     body {
       color: white;
-      background: linear-gradient(135deg, #ff8fb1, #ffb6c9, #b98cff);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.34) 0%, transparent 24%),
+        radial-gradient(circle at 85% 15%, rgba(255, 210, 229, 0.58) 0%, transparent 28%),
+        radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.2) 0%, transparent 30%),
+        linear-gradient(135deg, #ff4f91 0%, #ff70a8 35%, #ff9fc5 65%, #ff5d9b 100%);
+      background-size: 100% 100%;
+    }
+
+    /* Cahaya pink lembut yang bergerak */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -25%;
+      z-index: -3;
+      pointer-events: none;
+      background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 22%),
+        radial-gradient(circle, rgba(255, 191, 220, 0.32) 0%, transparent 30%),
+        radial-gradient(circle, rgba(255, 225, 238, 0.18) 0%, transparent 25%);
+      background-position: 12% 18%, 85% 72%, 45% 40%;
+      background-size: 45% 45%, 55% 55%, 40% 40%;
+      background-repeat: no-repeat;
+      animation: pinkGlow 11s ease-in-out infinite alternate;
+    }
+
+    /* Motif titik lembut agar background tidak polos */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+      background-position: 0 0, 20px 20px;
+      background-size: 40px 40px;
+    }
+
+    @keyframes pinkGlow {
+      from {
+        transform: scale(1) translate(0, 0);
+      }
+
+      to {
+        transform: scale(1.14) translate(-3%, 2%);
+      }
     }
 
     /* Semua halaman */
@@ -63,9 +110,10 @@
     .page::after {
       content: "❤";
       position: absolute;
-      opacity: 0.14;
+      opacity: 0.12;
       font-size: 150px;
       z-index: -1;
+      pointer-events: none;
     }
 
     .page::before {
@@ -90,6 +138,7 @@
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -101,7 +150,9 @@
       padding: 8px 16px;
       margin-bottom: 14px;
       border-radius: 50px;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 6px 16px rgba(146, 25, 82, 0.14);
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.5px;
@@ -111,7 +162,7 @@
       font-family: "Pacifico", cursive;
       font-size: clamp(2.5rem, 8vw, 4.8rem);
       line-height: 1.25;
-      text-shadow: 0 4px 15px rgba(122, 28, 75, 0.3);
+      text-shadow: 0 4px 15px rgba(122, 28, 75, 0.32);
       margin-bottom: 18px;
     }
 
@@ -119,7 +170,7 @@
       font-family: "Pacifico", cursive;
       font-size: clamp(2rem, 6vw, 3.3rem);
       margin-bottom: 16px;
-      text-shadow: 0 4px 15px rgba(122, 28, 75, 0.25);
+      text-shadow: 0 4px 15px rgba(122, 28, 75, 0.28);
     }
 
     p {
@@ -139,13 +190,13 @@
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(111, 24, 70, 0.22);
+      box-shadow: 0 8px 20px rgba(111, 24, 70, 0.24);
       transition: 0.25s ease;
     }
 
     .btn:hover {
       transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 12px 25px rgba(111, 24, 70, 0.3);
+      box-shadow: 0 12px 25px rgba(111, 24, 70, 0.32);
     }
 
     .btn:active {
@@ -155,11 +206,11 @@
     .message-box {
       margin-top: 20px;
       padding: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.38);
       border-radius: 25px;
       background: rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(108, 29, 71, 0.15);
+      box-shadow: 0 10px 30px rgba(108, 29, 71, 0.16);
     }
 
     /* Foto utama */
@@ -217,13 +268,13 @@
       font-family: "Pacifico", cursive;
       font-size: clamp(2.2rem, 8vw, 4.4rem);
       line-height: 1.5;
-      text-shadow: 0 5px 18px rgba(122, 28, 75, 0.3);
+      text-shadow: 0 5px 18px rgba(122, 28, 75, 0.32);
     }
 
     .small-text {
       margin-top: 12px;
       font-size: 0.95rem;
-      opacity: 0.9;
+      opacity: 0.92;
     }
 
     /* Tombol navigasi bawah */
@@ -240,7 +291,8 @@
       border-radius: 50px;
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 25px rgba(114, 22, 67, 0.16);
     }
 
     .nav-btn {
@@ -276,7 +328,7 @@
       height: 9px;
       border: none;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.52);
       cursor: pointer;
       transition: 0.25s;
     }
@@ -343,11 +395,14 @@
   <section class="page active">
     <div class="content">
       <div class="mini-title">🎀 Ada sesuatu untuk kamu</div>
+
       <h1>Selamat Ulang Tahun, Sayang! ❤️</h1>
+
       <p>
         Hari ini bukan hari biasa, karena hari ini adalah hari lahir
         seseorang yang membuat hidupku terasa lebih indah.
       </p>
+
       <button class="btn" onclick="nextPage()">
         Buka Kejutannya ✨
       </button>
@@ -358,9 +413,10 @@
   <section class="page">
     <div class="content">
       <div class="mini-title">💖 Halaman 2 dari 5</div>
+
       <h2>Untuk Kamu yang Spesial</h2>
 
-      <!-- Ganti foto1.jpeg dengan foto kalian -->
+      <!-- Pastikan nama foto sesuai dengan file di folder project -->
       <img src="foto1.jpeg" class="photo-main" alt="Foto spesial kita" />
 
       <div class="message-box">
@@ -377,8 +433,12 @@
   <section class="page">
     <div class="content">
       <div class="mini-title">📸 Halaman 3 dari 5</div>
+
       <h2>Kenangan Kita</h2>
-      <p>Setiap foto punya cerita, dan setiap cerita selalu punya kamu. 🥰</p>
+
+      <p>
+        Setiap foto punya cerita, dan setiap cerita selalu punya kamu. 🥰
+      </p>
 
       <div class="gallery">
         <img src="foto1.jpeg" class="photo-card" alt="Kenangan 1" />
@@ -392,6 +452,7 @@
   <section class="page">
     <div class="content">
       <div class="mini-title">💌 Halaman 4 dari 5</div>
+
       <h2>Pesan Kecil untukmu</h2>
 
       <div class="message-box">
@@ -413,6 +474,7 @@
   <section class="page">
     <div class="content">
       <div class="mini-title">🎉 Halaman terakhir</div>
+
       <div class="final">
         Aku Sayang Kamu ❤️
         <br />
@@ -429,7 +491,7 @@
     </div>
   </section>
 
-  <!-- Navigasi -->
+  <!-- Navigasi bawah -->
   <div class="navigation">
     <button class="nav-btn" id="prevBtn" onclick="prevPage()" disabled>
       ‹
@@ -450,12 +512,14 @@
 
     let currentPage = 0;
 
-    // Membuat titik indikator halaman
+    // Membuat titik indikator halaman otomatis
     pages.forEach((_, index) => {
       const dot = document.createElement("button");
       dot.classList.add("dot");
 
-      if (index === 0) dot.classList.add("active");
+      if (index === 0) {
+        dot.classList.add("active");
+      }
 
       dot.addEventListener("click", () => showPage(index));
       dotsContainer.appendChild(dot);
@@ -479,6 +543,7 @@
       currentPage = index;
 
       const dots = document.querySelectorAll(".dot");
+
       dots.forEach((dot, i) => {
         dot.classList.toggle("active", i === currentPage);
       });
@@ -502,10 +567,15 @@
       showPage(currentPage - 1);
     }
 
-    // Keyboard panah kanan dan kiri
+    // Navigasi dengan keyboard laptop
     document.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowRight") nextPage();
-      if (event.key === "ArrowLeft") prevPage();
+      if (event.key === "ArrowRight") {
+        nextPage();
+      }
+
+      if (event.key === "ArrowLeft") {
+        prevPage();
+      }
     });
 
     // Efek hati jatuh
@@ -531,14 +601,16 @@
 
     setInterval(createHeart, 500);
 
-    // Efek confetti saat tombol halaman terakhir dipencet
+    // Confetti saat tombol kejutan terakhir dipencet
     function celebrate() {
       const emojis = ["🎉", "🎊", "💖", "✨", "🌸", "💕"];
 
       for (let i = 0; i < 70; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
-        confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+        confetti.innerHTML =
+          emojis[Math.floor(Math.random() * emojis.length)];
 
         confetti.style.left = Math.random() * 100 + "vw";
         confetti.style.fontSize = Math.random() * 20 + 15 + "px";
