@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intan Danur Putri ❤️</title>
 
-  <!-- Meta Tags -->
   <meta property="og:title" content="Ada sesuatu nihh sayang buat kamu ❤️" />
-  <meta property="og:description" content="Lanjut klik disini yaa! ✨" />
+  <meta property="og:description" content="Lanjut Yukk klik disini! ✨" />
   <meta property="og:image" content="foto1.jpeg" />
   <meta property="og:type" content="website" />
 
@@ -20,29 +19,39 @@
     html, body { width: 100%; height: 100%; overflow: hidden; }
     body { color: white; overflow: hidden; background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.34) 0%, transparent 24%), radial-gradient(circle at 85% 15%, rgba(255, 210, 229, 0.58) 0%, transparent 28%), radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.2) 0%, transparent 30%), linear-gradient(135deg, #ff4f91 0%, #ff70a8 35%, #ff9fc5 65%, #ff5d9b 100%); background-size: 100% 100%; }
 
-    /* Halaman */
-    .page { position: absolute; inset: 0; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 25px; opacity: 0; visibility: hidden; transition: 0.5s; overflow-y: auto; }
-    .page.active { opacity: 1; visibility: visible; z-index: 2; }
-    .content { width: min(780px, 100%); }
-    
-    h1 { font-family: "Pacifico", cursive; font-size: clamp(2.5rem, 8vw, 4.8rem); margin-bottom: 18px; }
-    h2 { font-family: "Pacifico", cursive; font-size: clamp(2rem, 6vw, 3.3rem); margin-bottom: 16px; }
-    .btn { margin-top: 25px; padding: 14px 27px; border: none; border-radius: 50px; background: white; color: #e94f7c; font-size: 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(111, 24, 70, 0.24); transition: 0.2s; }
-    .btn:hover { transform: translateY(-3px); }
-    
-    .message-box { margin-top: 20px; padding: 24px; border: 1px solid rgba(255, 255, 255, 0.38); border-radius: 25px; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(12px); }
-    .photo-main { width: min(255px, 72vw); aspect-ratio: 1 / 1; object-fit: cover; padding: 9px; background: white; border-radius: 8px; margin: 12px auto; }
-    .gallery { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
-    .photo-card { width: min(140px, 30vw); aspect-ratio: 0.82 / 1; object-fit: cover; padding: 7px; background: white; border-radius: 7px; }
+    /* Cahaya pink lembut yang bergerak */
+    body::before { content: ""; position: fixed; inset: -25%; z-index: -3; pointer-events: none; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 22%), radial-gradient(circle, rgba(255, 191, 220, 0.32) 0%, transparent 30%), radial-gradient(circle, rgba(255, 225, 238, 0.18) 0%, transparent 25%); background-position: 12% 18%, 85% 72%, 45% 40%; background-size: 45% 45%, 55% 55%, 40% 40%; background-repeat: no-repeat; animation: pinkGlow 11s ease-in-out infinite alternate; }
+    body::after { content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none; opacity: 0.18; background-image: radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px), radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px); background-position: 0 0, 20px 20px; background-size: 40px 40px; }
+    @keyframes pinkGlow { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.14) translate(-3%, 2%); } }
 
-    /* Lilin */
-    .candle-container { margin: 30px auto; cursor: pointer; }
-    .flame { width: 30px; height: 45px; background: #ffcc00; border-radius: 50% 50% 20% 20%; margin: 0 auto; transition: 0.5s; animation: flicker 0.5s infinite alternate; }
-    .flame.out { opacity: 0; transform: scale(0); }
-    @keyframes flicker { from { transform: scale(1); } to { transform: scale(1.1); } }
-    #next-btn-candle { display: none; }
-    
-    /* Confetti */
+    /* Semua halaman */
+    .page { position: absolute; inset: 0; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 25px 18px 95px; opacity: 0; visibility: hidden; transform: translateX(60px); transition: opacity 0.55s ease, transform 0.55s ease; overflow-y: auto; }
+    .page.active { opacity: 1; visibility: visible; transform: translateX(0); z-index: 2; }
+    .page.previous { transform: translateX(-60px); }
+    .page::before, .page::after { content: "❤"; position: absolute; opacity: 0.12; font-size: 150px; z-index: -1; pointer-events: none; }
+    .page::before { top: 5%; left: 7%; transform: rotate(-15deg); }
+    .page::after { bottom: 5%; right: 7%; transform: rotate(18deg); }
+    .content { width: min(780px, 100%); animation: muncul 0.7s ease; }
+    @keyframes muncul { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .mini-title { display: inline-block; padding: 8px 16px; margin-bottom: 14px; border-radius: 50px; background: rgba(255, 255, 255, 0.22); border: 1px solid rgba(255, 255, 255, 0.28); box-shadow: 0 6px 16px rgba(146, 25, 82, 0.14); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; }
+    h1 { font-family: "Pacifico", cursive; font-size: clamp(2.5rem, 8vw, 4.8rem); line-height: 1.25; text-shadow: 0 4px 15px rgba(122, 28, 75, 0.32); margin-bottom: 18px; }
+    h2 { font-family: "Pacifico", cursive; font-size: clamp(2rem, 6vw, 3.3rem); margin-bottom: 16px; text-shadow: 0 4px 15px rgba(122, 28, 75, 0.28); }
+    p { max-width: 680px; margin: auto; line-height: 1.8; font-size: clamp(0.98rem, 2.8vw, 1.12rem); }
+    .btn { margin-top: 25px; padding: 14px 27px; border: none; border-radius: 50px; background: white; color: #e94f7c; font-size: 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(111, 24, 70, 0.24); transition: 0.25s ease; }
+    .btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 25px rgba(111, 24, 70, 0.32); }
+    .message-box { margin-top: 20px; padding: 24px; border: 1px solid rgba(255, 255, 255, 0.38); border-radius: 25px; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(108, 29, 71, 0.16); }
+    .photo-main { width: min(255px, 72vw); aspect-ratio: 1 / 1; object-fit: cover; padding: 9px 9px 28px; background: white; border-radius: 8px; box-shadow: 0 12px 25px rgba(77, 21, 48, 0.3); transform: rotate(-3deg); margin: 12px auto 8px; }
+    .gallery { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
+    .photo-card { width: min(180px, 40vw); aspect-ratio: 0.82 / 1; object-fit: cover; padding: 7px 7px 23px; background: white; border-radius: 7px; box-shadow: 0 10px 22px rgba(77, 21, 48, 0.28); transition: 0.25s ease; }
+    .photo-card:hover { transform: scale(1.08) rotate(0deg); z-index: 3; }
+    .final { font-family: "Pacifico", cursive; font-size: clamp(2.2rem, 8vw, 4.4rem); line-height: 1.5; text-shadow: 0 5px 18px rgba(122, 28, 75, 0.32); }
+    .small-text { margin-top: 12px; font-size: 0.95rem; opacity: 0.92; }
+    @keyframes pulse-candle { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+    .candle-btn { font-size: clamp(4.5rem, 15vw, 6rem); margin: 10px 0 20px; cursor: pointer; display: inline-block; animation: pulse-candle 1.5s infinite; transition: 0.3s ease; user-select: none; }
+    .candle-btn:hover { transform: scale(1.2) !important; filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)); animation: none; }
+    .heart { position: fixed; top: -30px; z-index: 20; pointer-events: none; animation: fall linear forwards; }
+    @keyframes fall { to { transform: translateY(115vh) rotate(360deg); } }
     .confetti { position: fixed; top: -20px; z-index: 30; pointer-events: none; animation: confettiFall 3s linear forwards; }
     @keyframes confettiFall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
   </style>
@@ -51,18 +60,18 @@
 <body>
   <audio id="bgm" loop><source src="lagu-romantis.mp3" type="audio/mpeg" /></audio>
 
-  <!-- HALAMAN 1 -->
   <section class="page active">
     <div class="content">
+      <div class="mini-title">🎀</div>
       <h1>Haiii Sayangnya Aku,<br>Intan Danur Putri ❤️</h1>
       <p>Aku ada sesuatu nih buat kamuu... langsung lanjut yahh! 🥰</p>
-      <button class="btn" onclick="nextPage()">Lanjut Yuk ✨</button>
+      <button class="btn" onclick="nextPage()">Lanjut Sayang ✨</button>
     </div>
   </section>
 
-  <!-- HALAMAN 2 -->
   <section class="page">
     <div class="content">
+      <div class="mini-title">💖 Selamat Ulang Tahun</div>
       <h2>Untuk Kamu yang Spesial</h2>
       <img src="foto1.jpeg" class="photo-main" />
       <div class="message-box">
@@ -72,9 +81,9 @@
     </div>
   </section>
 
-  <!-- HALAMAN 3 -->
   <section class="page">
     <div class="content">
+      <div class="mini-title">📸 Kenangan Kita</div>
       <h2>Terekam Indah</h2>
       <div class="gallery">
         <img src="foto1.jpeg" class="photo-card" />
@@ -85,71 +94,84 @@
     </div>
   </section>
 
-  <!-- HALAMAN 4 -->
   <section class="page">
     <div class="content">
+      <div class="mini-title">💌 Pesan Kecil</div>
       <h2>Harapanku Untukmu</h2>
       <div class="message-box">
-        <p>Semoga kesehatan, kebahagiaan, rezeki, dan semua hal baik selalu menyertaimu. Kamu berharga, kamu hebat, dan kamu sangat disayang. ❤️</p>
+        <p>Semoga kesehatan, kebahagiaan, rezeki, dan semua hal baik selalu menyertaimu. Tetaplah menjadi dirimu yang luar biasa. Kamu berharga, kamu hebat, dan kamu sangat disayang. ❤️</p>
       </div>
       <button class="btn" onclick="nextPage()">Lanjut ✨</button>
     </div>
   </section>
 
-  <!-- HALAMAN 5 (LILIN) -->
   <section class="page">
-    <div class="content">
-      <h2>Ayo Tiup Lilinnya! 🎂</h2>
-      <div class="candle-container" onclick="blowOut()">
-        <div class="flame" id="flame"></div>
-        <div style="width: 40px; height: 80px; background: #8B4513; margin: 0 auto; border-radius: 5px;"></div>
-      </div>
-      <p id="instruction">Klik apinya untuk meniup ya...</p>
-      <button class="btn" id="next-btn-candle" onclick="nextPage()">Lanjut ke Kejutan 🎁</button>
+    <div class="content" id="step-candle">
+      <div class="mini-title">🕯️ Hampir selesai...</div>
+      <h2>Coba Nyalakan Lilinnya</h2>
+      <div class="candle-btn" onclick="lightCandle()">🕯️</div>
+      <p class="small-text">Pencet lilin di atas ya! ✨</p>
     </div>
-  </section>
-
-  <!-- HALAMAN 6 (AKHIR) -->
-  <section class="page">
-    <div class="content">
-      <h2>Selamat Ulang Tahun Sayang! 🎂</h2>
-      <p>Aku sayang kamu! Semoga hari ini seindah senyummu.</p>
-      <button class="btn" onclick="celebrate()">Pencet Kejutan 🎊</button>
+    <div class="content" id="step-final" style="display: none;">
+      <div class="mini-title">🎉 Yeyyyy!</div>
+      <div class="final">Aku Sayang Kamu ❤️<br>Selamat Ulang Tahun! 🎂</div>
+      <p class="small-text">Semoga hari ini seindah senyummu!</p>
+      <button class="btn" onclick="celebrate()">Pencet lagi untuk Kejutan 🎊</button>
     </div>
   </section>
 
   <script>
-    let currentPage = 0;
     const pages = document.querySelectorAll(".page");
+    const bgm = document.getElementById("bgm");
+    let currentPage = 0;
 
-    function nextPage() {
-      if (currentPage === 0) document.getElementById("bgm").play().catch(()=>{});
-      if (currentPage < pages.length - 1) {
-        pages[currentPage].classList.remove("active");
-        currentPage++;
-        pages[currentPage].classList.add("active");
-      }
+    function showPage(index) {
+      if (index < 0 || index >= pages.length) return;
+      if (index > 0 && bgm.paused) bgm.play().catch(()=>{});
+
+      pages.forEach((page, i) => {
+        page.classList.remove("active", "previous");
+        if (i === index) page.classList.add("active");
+        if (i < index) page.classList.add("previous");
+      });
+      currentPage = index;
     }
 
-    function blowOut() {
-      const flame = document.getElementById("flame");
-      if (!flame.classList.contains("out")) {
-        flame.classList.add("out");
-        document.getElementById("instruction").innerText = "Yeayyy! Selamat ulang tahun! 💖";
-        document.getElementById("next-btn-candle").style.display = "inline-block";
-      }
+    function nextPage() { showPage(currentPage + 1); }
+
+    function lightCandle() {
+      document.getElementById("step-candle").style.display = "none";
+      const finalDiv = document.getElementById("step-final");
+      finalDiv.style.display = "block";
+      celebrate();
     }
+
+    // Efek hati jatuh
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      const hearts = ["❤️", "💖", "💕", "💗", "✨"];
+      heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 16 + 14 + "px";
+      const duration = Math.random() * 3 + 4;
+      heart.style.animationDuration = duration + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), duration * 1000);
+    }
+    setInterval(() => { if (!document.hidden) createHeart(); }, 500);
 
     function celebrate() {
-      const emojis = ["🎉", "🎊", "💖", "✨"];
+      const emojis = ["🎉", "🎊", "💖", "✨", "🌸", "💕"];
       for (let i = 0; i < 70; i++) {
-        const c = document.createElement("div");
-        c.classList.add("confetti");
-        c.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-        c.style.left = Math.random() * 100 + "vw";
-        c.style.animationDuration = Math.random() * 2 + 2 + "s";
-        document.body.appendChild(c);
-        setTimeout(() => c.remove(), 4000);
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.fontSize = Math.random() * 20 + 15 + "px";
+        confetti.style.animationDuration = Math.random() * 2 + 2 + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 4000);
       }
     }
   </script>
