@@ -87,7 +87,7 @@
       box-shadow: 0 15px 35px rgba(77, 21, 48, 0.5); 
     }
 
-    /* Koordinat pembentuk Love dari 13 foto */
+    /* Koordinat pembentuk Love */
     .photo-card:nth-child(1) { top: 5%; left: 12%; transform: rotate(-15deg); z-index: 3; }
     .photo-card:nth-child(2) { top: 5%; right: 12%; transform: rotate(15deg); z-index: 3; }
     .photo-card:nth-child(3) { top: 32%; left: 0%; transform: rotate(-25deg); z-index: 4; }
@@ -96,11 +96,12 @@
     .photo-card:nth-child(6) { top: 58%; left: 18%; transform: rotate(-12deg); z-index: 5; }
     .photo-card:nth-child(7) { top: 58%; right: 18%; transform: rotate(12deg); z-index: 5; }
     .photo-card:nth-child(8) { top: 78%; left: 36%; transform: rotate(0deg); z-index: 6; }
-    .photo-card:nth-child(9) { top: 78%; left: 36%; transform: rotate(0deg); z-index: 6; }
-    .photo-card:nth-child(10) { top: 78%; left: 36%; transform: rotate(0deg); z-index: 6; }
-    .photo-card:nth-child(11) { top: 78%; left: 36%; transform: rotate(0deg); z-index: 6; }
-    .photo-card:nth-child(12) { top: 78%; left: 36%; transform: rotate(0deg); z-index: 6; }
-    .photo-card:nth-child(13) { top: 78%; left: 36%; transform: rotate(0deg); z-index: 6; }
+    /* Tambahan untuk foto 9-13 agar tampil */
+    .photo-card:nth-child(9) { top: 20%; left: 22%; transform: rotate(5deg); z-index: 1; }
+    .photo-card:nth-child(10) { top: 20%; right: 22%; transform: rotate(-5deg); z-index: 1; }
+    .photo-card:nth-child(11) { top: 45%; left: 12%; transform: rotate(-10deg); z-index: 2; }
+    .photo-card:nth-child(12) { top: 45%; right: 12%; transform: rotate(10deg); z-index: 2; }
+    .photo-card:nth-child(13) { top: 45%; left: 36%; transform: rotate(0deg); z-index: 3; }
 
     .final { font-family: "Pacifico", cursive; font-size: clamp(2.2rem, 8vw, 4.4rem); line-height: 1.5; text-shadow: 0 5px 18px rgba(122, 28, 75, 0.32); }
     .small-text { margin-top: 12px; font-size: 0.95rem; opacity: 0.92; }
