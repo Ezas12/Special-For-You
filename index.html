@@ -64,37 +64,19 @@
        PERBAIKAN CSS GALLERY (DIPERBESAR UNTUK HP)
        ========================================================= */
     .gallery { 
-      display: flex;
-      flex-wrap: wrap; 
-      justify-content: center; 
-      gap: 15px; /* Jarak antar foto sedikit dilebarkan */
-      width: 100%; 
-      max-width: 600px; 
-      margin: 15px auto;
-      padding: 10px;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; 
+      width: 100%; max-width: 600px; margin: 15px auto; padding: 10px;
     }
-
     .photo-card { 
-      /* Ubah clamp agar di HP jadi lebih besar (kisaran 140px ke atas) */
-      width: clamp(140px, 42vw, 180px); 
-      aspect-ratio: 1 / 1.1; 
-      object-fit: cover; 
-      padding: 8px 8px 24px; /* Proporsi polaroid disesuaikan dengan ukuran baru */
-      background: white; 
-      border-radius: 6px; 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
-      transition: 0.3s ease;
+      width: clamp(140px, 42vw, 180px); aspect-ratio: 1 / 1.1; object-fit: cover; 
+      padding: 8px 8px 24px; background: white; border-radius: 6px; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: 0.3s ease;
     }
-
-    /* Efek miring kanan-kiri */
     .photo-card:nth-child(even) { transform: rotate(3deg); }
     .photo-card:nth-child(odd) { transform: rotate(-3deg); }
-
     .photo-card:hover { 
-      /* Skala zoom saat ditekan agak dikurangi agar di HP tidak terlalu besar menutupi layar */
       transform: scale(1.15) rotate(0deg) !important; 
-      z-index: 100 !important; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+      z-index: 100 !important; box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
     }
     /* ========================================================= */
 
@@ -104,6 +86,25 @@
     .candle-btn { font-size: clamp(4.5rem, 15vw, 6rem); margin: 10px 0 20px; cursor: pointer; display: inline-block; animation: pulse-candle 1.5s infinite; transition: 0.3s ease; user-select: none; }
     .candle-btn:hover { transform: scale(1.2) !important; filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)); animation: none; }
     
+    /* =========================================================
+       CSS BARU UNTUK KADO
+       ========================================================= */
+    .gift-wrapper { margin-top: 30px; cursor: pointer; }
+    .gift-box { font-size: clamp(5rem, 20vw, 8rem); animation: wobble 2s infinite; display: inline-block; transition: transform 0.3s ease; user-select: none; }
+    .gift-box:hover { transform: scale(1.1); }
+    
+    @keyframes wobble {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-8deg); }
+      50% { transform: rotate(8deg); }
+      75% { transform: rotate(-4deg); }
+    }
+    
+    .gift-content { display: none; animation: muncul 0.8s ease forwards; margin-top: 10px; }
+    .gift-items { font-size: clamp(2.5rem, 8vw, 3.5rem); margin: 20px 0; letter-spacing: 10px; }
+    .gift-text { padding: 20px; background: rgba(255,255,255,0.25); border-radius: 20px; border: 1px solid rgba(255,255,255,0.5); backdrop-filter: blur(10px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); font-weight: 500; }
+    /* ========================================================= */
+
     /* Tombol navigasi bawah DIHILANGKAN dari layar */
     .navigation { display: none !important; }
 
@@ -117,7 +118,7 @@
 
     @media (max-width: 480px) {
       .page { padding-top: 20px; }
-      .message-box { padding: 18px; }
+      .message-box, .gift-text { padding: 18px; }
     }
   </style>
 </head>
@@ -202,7 +203,34 @@
       <div class="final">🎂<br>Selamat Ulang Tahun Sayangg! ❤️</div>
       <p class="small-text">Semoga hari ini seindah senyummu!</p><br>
       <div class="final">🎉🎈🎉🎈🎉</div>
-      <button class="btn" onclick="celebrate()">Pencet lagi untuk Kejutan 🎊</button>
+      <!-- Tombol Ini Diubah Untuk Melanjut Ke Halaman Kado -->
+      <button class="btn" onclick="nextPage()">Ada satu lagi nih... klik ya 🎁</button>
+    </div>
+  </section>
+
+  <!-- HALAMAN BARU: BUKA KADO -->
+  <section class="page">
+    <div class="content">
+      <div class="mini-title">🎁 Kejutan Terakhir</div>
+      <h2>Buka Kadonya Yuk!</h2>
+      
+      <!-- Kado Sebelum Dibuka -->
+      <div class="gift-wrapper" id="unopened-gift" onclick="openGift()">
+        <div class="gift-box">🎁</div>
+        <p class="small-text">Sentuh kadonya ya sayang! ✨</p>
+      </div>
+
+      <!-- Isi Kado Setelah Dibuka (Awalnya Disembunyikan) -->
+      <div class="gift-content" id="opened-gift">
+        <!-- Hadiah (Bisa Kamu Ganti Emojinya Sesuai Selera) -->
+        <div class="gift-items">👜 👗 💐 💍 🍫</div> 
+        
+        <!-- Tulisan Hadiah -->
+        <div class="gift-text">
+          Tadaaa! 🎉 Anggap aja ini kado virtual dari aku dulu yaa hihihi. Semoga kamu suka! Doa yang paling baik selalu buat kamu, I love you banyak banyak sayangkuuu! ❤️✨
+        </div>
+      </div>
+      
     </div>
   </section>
 
@@ -282,6 +310,13 @@
       const finalDiv = document.getElementById("step-final");
       finalDiv.style.display = "block";
       celebrate();
+    }
+
+    // FUNGSI BARU BUKA KADO
+    function openGift() {
+      document.getElementById("unopened-gift").style.display = "none";
+      document.getElementById("opened-gift").style.display = "block";
+      celebrate(); // Memanggil hujan confetti lagi saat kado dibuka
     }
 
     function createHeart() {
