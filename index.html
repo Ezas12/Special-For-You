@@ -61,13 +61,13 @@
     .photo-main { width: min(255px, 72vw); aspect-ratio: 1 / 1; object-fit: cover; padding: 9px 9px 28px; background: white; border-radius: 8px; box-shadow: 0 12px 25px rgba(77, 21, 48, 0.3); transform: rotate(-3deg); margin: 12px auto 8px; }
 
     /* =========================================================
-       PERBAIKAN CSS GALLERY (Kiri ke Kanan, Turun Jika Penuh) 
+       PERBAIKAN CSS GALLERY (DIPERBESAR UNTUK HP)
        ========================================================= */
     .gallery { 
       display: flex;
-      flex-wrap: wrap; /* Fitur sakti untuk membuat item turun jika tidak muat */
-      justify-content: center; /* Posisi di tengah layar */
-      gap: 12px; /* Jarak antar foto, rapi dan tidak nempel */
+      flex-wrap: wrap; 
+      justify-content: center; 
+      gap: 15px; /* Jarak antar foto sedikit dilebarkan */
       width: 100%; 
       max-width: 600px; 
       margin: 15px auto;
@@ -75,22 +75,24 @@
     }
 
     .photo-card { 
-      width: clamp(90px, 28vw, 120px); /* Ukuran foto menyesuaikan layar HP/Laptop */
-      aspect-ratio: 1 / 1.1; /* Proporsi standar polaroid */
-      object-fit: cover; /* Biar foto tidak gepeng */
-      padding: 6px 6px 20px; 
+      /* Ubah clamp agar di HP jadi lebih besar (kisaran 140px ke atas) */
+      width: clamp(140px, 42vw, 180px); 
+      aspect-ratio: 1 / 1.1; 
+      object-fit: cover; 
+      padding: 8px 8px 24px; /* Proporsi polaroid disesuaikan dengan ukuran baru */
       background: white; 
       border-radius: 6px; 
       box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
       transition: 0.3s ease;
     }
 
-    /* Efek miring kanan-kiri biar estetik tapi tetap rapi */
+    /* Efek miring kanan-kiri */
     .photo-card:nth-child(even) { transform: rotate(3deg); }
     .photo-card:nth-child(odd) { transform: rotate(-3deg); }
 
     .photo-card:hover { 
-      transform: scale(1.3) rotate(0deg) !important; 
+      /* Skala zoom saat ditekan agak dikurangi agar di HP tidak terlalu besar menutupi layar */
+      transform: scale(1.15) rotate(0deg) !important; 
       z-index: 100 !important; 
       box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
     }
