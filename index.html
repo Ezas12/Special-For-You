@@ -211,7 +211,7 @@
       <div class="reason-card" onclick="nextReason()">
         <p id="reason-text" style="font-weight: 600;">Klik Aku ❤️</p>
       </div>
-      <p class="small-text">Klik terus sampai habis hihihi 🤭</p>
+      <p class="small-text" id="reason-hint">Klik terus sampai habis hihihi 🤭</p>
       <br>
       <button class="btn" id="btn-reason" style="display:none;" onclick="nextPage()">Lanjut baca yuk 💌</button>
     </div>
@@ -416,16 +416,28 @@
       "Karena kamu adalah kamu. ❤️"
     ];
     let reasonIdx = 0;
+
     function nextReason() {
       const textEl = document.getElementById("reason-text");
+      const hintEl = document.getElementById("reason-hint");
+      const btnEl = document.getElementById("btn-reason");
+
       textEl.style.opacity = 0;
+
       setTimeout(() => {
-        textEl.innerText = reasons[reasonIdx];
+        if (reasonIdx >= reasons.length) {
+          reasonIdx = 0;
+          hintEl.innerText = "Klik terus sampai habis hihihi 🤭";
+        }
+
+        textEl.innerHTML = reasons[reasonIdx];
         textEl.style.opacity = 1;
         reasonIdx++;
-        if(reasonIdx >= reasons.length) {
-          reasonIdx = 0;
-          document.getElementById("btn-reason").style.display = "inline-block";
+
+        if (reasonIdx === reasons.length) {
+          btnEl.style.display = "inline-block";
+          hintEl.innerHTML = "Klik kartu/ikon 🔄 jika ingin membaca ulang";
+          textEl.innerHTML = reasons[reasonIdx - 1] + "<br><br><span style='font-size:1.8rem; display:block; margin-top:5px; animation: pulse-candle 1.5s infinite;'>🔄</span>";
         }
       }, 250);
     }
@@ -467,7 +479,6 @@
       const x = e.clientX || window.innerWidth / 2;
       const y = e.clientY || window.innerHeight / 2;
       
-      // Getar HP jika Android mendukung Vibration API
       if ('vibrate' in navigator) {
         navigator.vibrate([100, 50, 100, 50, 200]);
       }
