@@ -108,6 +108,10 @@
     .reason-card { background: rgba(255,255,255,0.25); border: 2px dashed rgba(255,255,255,0.6); padding: 25px 20px; border-radius: 20px; cursor: pointer; transition: 0.3s; margin: 20px 0; min-height: 110px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
     .reason-card:hover { background: rgba(255,255,255,0.4); transform: scale(1.03); }
 
+    /* WADAH TOMBOL DI LUAR KOTAK ALASAN */
+    .reason-actions { display: none; justify-content: center; align-items: center; gap: 12px; margin-top: 18px; }
+    .btn-sync { padding: 14px 18px !important; margin-top: 0 !important; font-size: 1.2rem !important; }
+
     /* ================= SURAT DIGITAL ================= */
     .envelope-wrapper { position: relative; width: 260px; height: 170px; margin: 30px auto; cursor: pointer; perspective: 1000px; }
     .envelope { width: 100%; height: 100%; background: #e94f7c; border-radius: 10px; position: absolute; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.5s; z-index: 3; }
@@ -212,8 +216,12 @@
         <p id="reason-text" style="font-weight: 600;">Klik Aku ❤️</p>
       </div>
       <p class="small-text" id="reason-hint">Klik terus sampai habis hihihi 🤭</p>
-      <br>
-      <button class="btn" id="btn-reason" style="display:none;" onclick="nextPage()">Lanjut baca yuk 💌</button>
+
+      <!-- TOMBOL DI LUAR KOTAK -->
+      <div class="reason-actions" id="reason-action-box">
+        <button class="btn" style="margin-top:0;" onclick="nextPage()">Lanjut baca yuk 💌</button>
+        <button class="btn btn-sync" onclick="resetReason()" title="Ulangi dari awal">🔄</button>
+      </div>
     </div>
   </section>
 
@@ -420,25 +428,37 @@
     function nextReason() {
       const textEl = document.getElementById("reason-text");
       const hintEl = document.getElementById("reason-hint");
-      const btnEl = document.getElementById("btn-reason");
+      const actionBox = document.getElementById("reason-action-box");
+
+      if (reasonIdx >= reasons.length) return;
 
       textEl.style.opacity = 0;
 
       setTimeout(() => {
-        if (reasonIdx >= reasons.length) {
-          reasonIdx = 0;
-          hintEl.innerText = "Klik terus sampai habis hihihi 🤭";
-        }
-
-        textEl.innerHTML = reasons[reasonIdx];
+        textEl.innerText = reasons[reasonIdx];
         textEl.style.opacity = 1;
         reasonIdx++;
 
         if (reasonIdx === reasons.length) {
-          btnEl.style.display = "inline-block";
-          hintEl.innerHTML = "Klik kartu/ikon 🔄 jika ingin membaca ulang";
-          textEl.innerHTML = reasons[reasonIdx - 1] + "<br><br><span style='font-size:1.8rem; display:block; margin-top:5px; animation: pulse-candle 1.5s infinite;'>🔄</span>";
+          actionBox.style.display = "flex";
+          hintEl.innerText = "Klik tombol di bawah untuk lanjut atau ikon 🔄 untuk mengulang";
         }
+      }, 250);
+    }
+
+    function resetReason() {
+      const textEl = document.getElementById("reason-text");
+      const hintEl = document.getElementById("reason-hint");
+      const actionBox = document.getElementById("reason-action-box");
+
+      reasonIdx = 0;
+      textEl.style.opacity = 0;
+      actionBox.style.display = "none";
+
+      setTimeout(() => {
+        textEl.innerText = "Klik Aku ❤️";
+        textEl.style.opacity = 1;
+        hintEl.innerText = "Klik terus sampai habis hihihi 🤭";
       }, 250);
     }
 
