@@ -401,7 +401,7 @@
 
     .envelope {
       width: 100%;
-      height: 100%;
+      height: 175px;
       background: #e94f7c;
       border-radius: 10px;
       position: absolute;
@@ -747,11 +747,13 @@
         </div>
       </div>
 
-      <p class="small-text">
+      <p class="small-text" id="envelope-hint">
         Sentuh amplopnya buat buka surat ✨
       </p>
 
-      <button class="btn" onclick="nextPage()">Masuk ke kejutan 🎂</button>
+      <button class="btn" id="envelope-next-btn" onclick="nextPage()">
+        Masuk ke kejutan 🎂
+      </button>
     </div>
   </section>
 
@@ -1127,7 +1129,16 @@
     ========================================================== */
 
     function openEnvelope() {
-      document.getElementById("envelope").classList.toggle("open");
+      const envelope = document.getElementById("envelope");
+      const hint = document.getElementById("envelope-hint");
+
+      envelope.classList.toggle("open");
+
+      if (envelope.classList.contains("open")) {
+        hint.innerText = "Suratnya sudah terbuka 🤍 Yuk dibaca...";
+      } else {
+        hint.innerText = "Sentuh amplopnya buat buka surat ✨";
+      }
     }
 
     /* =========================================================
@@ -1341,6 +1352,8 @@
 
       // Envelope reset
       document.getElementById("envelope").classList.remove("open");
+      document.getElementById("envelope-hint").innerText =
+        "Sentuh amplopnya buat buka surat ✨";
 
       // Birthday steps reset
       document.getElementById("step-candle").style.display = "block";
