@@ -395,9 +395,10 @@
       transition: height .6s ease, margin .6s ease;
     }
 
+    /* PERBAIKAN 1: Tinggi amplop dinaikkan agar teks petunjuk di bawah tidak tertimpa */
     .envelope-wrapper.open {
-      height: 460px; 
-      margin-bottom: 35px;
+      height: 550px; 
+      margin-bottom: 30px;
     }
 
     .envelope {
@@ -752,7 +753,8 @@
         Sentuh amplopnya buat buka surat ✨
       </p>
 
-      <button class="btn" id="envelope-next-btn" onclick="nextPage()">
+      <!-- PERBAIKAN 2: Tombol disembunyikan pakai style="display: none;" sampai surat diklik -->
+      <button class="btn" id="envelope-next-btn" onclick="nextPage()" style="display: none;">
         Masuk ke kejutan 🎂
       </button>
     </div>
@@ -1167,14 +1169,17 @@
        ENVELOPE
     ========================================================== */
 
+    // PERBAIKAN 3: Tombol muncul saat amplop ditekan, dan tidak akan hilang walau amplop ditutup
     function openEnvelope() {
       const envelope = document.getElementById("envelope");
       const hint = document.getElementById("envelope-hint");
+      const nextBtn = document.getElementById("envelope-next-btn");
 
       envelope.classList.toggle("open");
 
       if (envelope.classList.contains("open")) {
         hint.innerText = "Suratnya sudah terbuka 🤍 Yuk dibaca...";
+        nextBtn.style.display = "inline-block"; // Munculkan tombol!
       } else {
         hint.innerText = "Sentuh amplopnya buat buka surat ✨";
       }
@@ -1236,7 +1241,7 @@
     function virtualHug(event) {
       const status = document.getElementById("hug-status");
 
-      // 1. Teks berubah secara acak setiap kali diklik
+      // Teks berubah secara acak setiap kali diklik
       const messages = [
         "Dipeluk balik! 🤗🤍", 
         "Pelukkk lagiii! 🤍", 
@@ -1246,18 +1251,16 @@
       ];
       status.innerText = messages[Math.floor(Math.random() * messages.length)];
 
-      // 2. Munculkan beberapa emotikon (🤍 dan 🤗) sekaligus
+      // Munculkan beberapa emotikon (🤍 dan 🤗) sekaligus
       const emojis = ["🤗", "🤍"];
-      const amount = 3; // Jumlah emotikon yang keluar sekali klik
+      const amount = 3; 
 
       for (let i = 0; i < amount; i++) {
         const floatingEmoji = document.createElement("div");
         floatingEmoji.className = "hug-emoji";
         
-        // Pilih emoji acak antara 🤍 atau 🤗
         floatingEmoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
 
-        // Tentukan posisi munculnya (sedikit disebar agar tidak bertumpuk)
         let x = event.clientX ? (event.clientX - 20 + (Math.random() * 40)) : (window.innerWidth / 2);
         let y = event.clientY ? (event.clientY - 20 + (Math.random() * 40)) : (window.innerHeight / 2);
 
@@ -1268,7 +1271,6 @@
 
         document.body.appendChild(floatingEmoji);
 
-        // Hapus emotikon setelah animasinya selesai (2 detik)
         setTimeout(() => {
           floatingEmoji.remove();
         }, 2000);
