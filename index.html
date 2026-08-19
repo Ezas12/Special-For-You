@@ -396,7 +396,6 @@
     }
 
     .envelope-wrapper.open {
-      /* PERBAIKAN: Tinggi dan jarak bawah ditambah agar tidak nabrak teks */
       height: 460px; 
       margin-bottom: 35px;
     }
@@ -451,7 +450,6 @@
     }
 
     .envelope-wrapper.open .letter {
-      /* PERBAIKAN: Posisi jatuhnya surat dinaikkan sedikit */
       top: 120px; 
       transform: translateY(0);
       opacity: 1;
@@ -600,7 +598,7 @@
 <body>
 
   <!-- =========================================================
-       OPENING
+        OPENING
   ========================================================== -->
   <div id="flower-curtain">
     <div class="flower-group">🌸 🌺 🌼 🌹</div>
@@ -616,7 +614,7 @@
   </audio>
 
   <!-- =========================================================
-       PAGE 1 — OPENING
+        PAGE 1 — OPENING
   ========================================================== -->
   <section class="page active" id="page-opening">
     <div class="content">
@@ -626,7 +624,7 @@
   </section>
 
   <!-- =========================================================
-       PAGE 2 — COVER + PESAN AWAL
+        PAGE 2 — COVER + PESAN AWAL
   ========================================================== -->
   <section class="page" id="page-cover">
     <div class="content">
@@ -657,7 +655,7 @@
   </section>
 
   <!-- =========================================================
-       PAGE 3 — MEMORIES
+        PAGE 3 — MEMORIES
   ========================================================== -->
   <section class="page" id="page-memories">
     <div class="content">
@@ -702,7 +700,7 @@
   </section>
 
   <!-- =========================================================
-       PAGE 4 — ALASAN AKU SUKA KAMU
+        PAGE 4 — ALASAN AKU SUKA KAMU
   ========================================================== -->
   <section class="page" id="page-reasons">
     <div class="content">
@@ -730,7 +728,7 @@
   </section>
 
   <!-- =========================================================
-       PAGE 5 — SURAT
+        PAGE 5 — SURAT
   ========================================================== -->
   <section class="page" id="page-letter">
     <div class="content">
@@ -761,7 +759,7 @@
   </section>
 
   <!-- =========================================================
-       PAGE 6 — BIRTHDAY SURPRISE + GIFT + HUG
+        PAGE 6 — BIRTHDAY SURPRISE + GIFT + HUG
   ========================================================== -->
   <section class="page" id="page-surprise">
 
@@ -843,7 +841,7 @@
   </section>
 
   <!-- =========================================================
-       PAGE 7 — ENDING
+        PAGE 7 — ENDING
   ========================================================== -->
   <section class="page" id="page-ending">
     <div class="content">
@@ -886,7 +884,7 @@
   </section>
 
   <!-- =========================================================
-       LIGHTBOX
+        LIGHTBOX
   ========================================================== -->
   <div id="lightbox">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
@@ -922,9 +920,9 @@
     const reasons = [
       "Karena kamu selalu bikin aku ketawa 😆",
       "Karena senyum kamu itu candu banget buat aku ✨",
-      "Karena kamu gemesin banget, gumusshh 😝"
-      "Karena pipi kamu bawaannya minta dicubit terus! 🤏"
-      "Karena kalau nggak ada kamu, hariku rasanya sepi banget huhuhu 🥺"
+      "Karena kamu gemesin banget, gumusshh 😝",
+      "Karena pipi kamu bawaannya minta dicubit terus! 🤏",
+      "Karena kalau nggak ada kamu, hariku rasanya sepi banget huhuhu 🥺",
       "Karena kamu bukan cuma cewe aku, tapi juga teman cerita terbaikku hihihi 👫❤️"
     ];
 
@@ -943,6 +941,41 @@
     let giftClickState = 0;
     let lilinSudahDiklik = false;
     let pageHasOpened = false;
+
+    // FUNGSI INI DITAMBAHKAN AGAR TIDAK ERROR SAAT LOAD
+    function resetAllStates() {
+      currentPage = 0;
+      giftClickState = 0;
+    }
+
+    function resetGiftUI() {
+      const box = document.getElementById("gift-box-el");
+      const unopened = document.getElementById("unopened-gift");
+      const opened = document.getElementById("opened-gift");
+      const statusText = document.getElementById("gift-status-text");
+      
+      if (box) box.classList.remove("shake");
+      if (unopened) unopened.style.display = "block";
+      if (opened) opened.style.display = "none";
+      if (statusText) statusText.innerText = "Sentuh kadonya ya sayang! ✨";
+    }
+
+    function spawnParticles(emoji, count) {
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        p.innerText = emoji;
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.fontSize = Math.random() * 1.5 + 1 + "rem";
+        p.style.animationDuration = Math.random() * 2 + 2 + "s";
+        p.style.animationDelay = Math.random() * 0.5 + "s";
+        document.body.appendChild(p);
+
+        setTimeout(() => {
+          p.remove();
+        }, 4000);
+      }
+    }
 
     /* =========================================================
        OPENING
@@ -963,7 +996,7 @@
       if (typeIdx < typeText.length) {
         const char = typeText.charAt(typeIdx);
 
-        if (char === "\\n") {
+        if (char === "\n") {
           target.innerHTML += "<br>";
         } else {
           target.innerHTML += char;
@@ -1178,7 +1211,7 @@
     }
 
     /* =========================================================
-       GIFT & OTHERS (POTONGAN KODE LANJUTAN TETAP SAMA)
+       GIFT & OTHERS
     ========================================================== */
 
     function handleGiftClick() {
@@ -1191,122 +1224,44 @@
         giftClickState = 1;
 
         setTimeout(() => {
-          if (giftClickState === 1) {
-            statusText.innerText = "Ayo, pencet sekali lagi 🤭";
-          }
-        }, 1000);
-
-      } else if (giftClickState === 1) {
-        giftClickState = 2;
-        box.classList.remove("shake");
-
+          box.classList.remove("shake");
+        }, 500);
+      } else {
         document.getElementById("unopened-gift").style.display = "none";
         document.getElementById("opened-gift").style.display = "block";
-
-        spawnParticles("✨", 34);
+        spawnParticles("💖", 30);
       }
     }
 
-    function resetGiftUI() {
-      document.getElementById("unopened-gift").style.display = "block";
-      document.getElementById("opened-gift").style.display = "none";
-      document.getElementById("gift-box-el").classList.remove("shake");
-      document.getElementById("gift-status-text").innerText =
-        "Sentuh kadonya ya sayang! ✨";
-    }
-
-    function virtualHug(e) {
-      const hugBtn = e.target;
-      const rect = hugBtn.getBoundingClientRect();
-      const emoji = document.createElement("div");
-
-      emoji.innerText = "🤍","🤗";
-      emoji.className = "hug-emoji";
-      
-      const x = rect.left + rect.width / 2 - 25 + (Math.random() * 30 - 15);
-      const y = rect.top + rect.height / 2 - 25;
-      
-      emoji.style.left = `${x}px`;
-      emoji.style.top = `${y}px`;
-      
-      document.body.appendChild(emoji);
-
+    function virtualHug(event) {
       const status = document.getElementById("hug-status");
-      const responses = [
-        "Peluk jauuhhh! 🤗",
-        "Sayang banget dehh ❤️",
-        "Hehehe... manisnya 🤍",
-        "Duh jadi salting 😆",
-        "Terima kasih ya! ✨"
-      ];
-      
-      status.innerText = responses[Math.floor(Math.random() * responses.length)];
+      status.innerText = "Peluk jauhh! 🤗❤️";
+
+      // Efek melayang emoji peluk
+      const heart = document.createElement("div");
+      heart.className = "hug-emoji";
+      heart.innerText = "🤗";
+      heart.style.left = event.clientX ? event.clientX + "px" : "50vw";
+      heart.style.top = event.clientY ? event.clientY + "vh" : "60vh";
+      document.body.appendChild(heart);
 
       setTimeout(() => {
-        emoji.remove();
+        heart.remove();
       }, 2000);
     }
 
-    /* =========================================================
-       UTILITIES
-    ========================================================== */
-
     function triggerNightModeEnding() {
       document.body.classList.add("night-mode");
-      
-      const lines = document.querySelectorAll(".fade-ending");
+      const lines = document.querySelectorAll("#page-ending .fade-ending");
       lines.forEach((line, i) => {
-        line.classList.remove("show");
         setTimeout(() => {
           line.classList.add("show");
-        }, i * 900 + 300);
+        }, i * 800 + 500);
       });
-    }
-
-    function spawnParticles(char, amount) {
-      for (let i = 0; i < amount; i++) {
-        const p = document.createElement("div");
-        p.className = "particle";
-        p.innerText = char;
-        
-        const size = Math.random() * 1.5 + 0.8;
-        const left = Math.random() * 100;
-        const duration = Math.random() * 2.5 + 2.5;
-        const delay = Math.random() * 0.5;
-
-        p.style.fontSize = `${size}rem`;
-        p.style.left = `${left}vw`;
-        p.style.animationDuration = `${duration}s`;
-        p.style.animationDelay = `${delay}s`;
-
-        document.body.appendChild(p);
-
-        setTimeout(() => {
-          p.remove();
-        }, (duration + delay) * 1000);
-      }
     }
 
     function restartApp() {
       location.reload();
-    }
-
-    function resetAllStates() {
-      currentPage = 0;
-      typeIdx = 0;
-      currentPhotoIdx = 0;
-      reasonIdx = 0;
-      giftClickState = 0;
-      lilinSudahDiklik = false;
-      
-      const typingTarget = document.getElementById("typing-text");
-      if (typingTarget) typingTarget.innerHTML = "";
-      
-      const btn = document.getElementById("typing-btn");
-      if (btn) {
-        btn.style.opacity = "0";
-        btn.style.pointerEvents = "none";
-      }
     }
   </script>
 </body>
