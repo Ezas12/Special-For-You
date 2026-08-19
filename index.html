@@ -1235,19 +1235,44 @@
 
     function virtualHug(event) {
       const status = document.getElementById("hug-status");
-      status.innerText = "Peluk jauhh! 🤗❤️";
 
-      // Efek melayang emoji peluk
-      const heart = document.createElement("div");
-      heart.className = "hug-emoji";
-      heart.innerText = "🤗";
-      heart.style.left = event.clientX ? event.clientX + "px" : "50vw";
-      heart.style.top = event.clientY ? event.clientY + "vh" : "60vh";
-      document.body.appendChild(heart);
+      // 1. Teks berubah secara acak setiap kali diklik
+      const messages = [
+        "Dipeluk balik! 🤗🤍", 
+        "Pelukkk lagiii! 🤍", 
+        "Uhh gemesnyaa! 🤗", 
+        "Sayang kamuu! 🤍✨",
+        "Peluk jauhh! 🤗❤️"
+      ];
+      status.innerText = messages[Math.floor(Math.random() * messages.length)];
 
-      setTimeout(() => {
-        heart.remove();
-      }, 2000);
+      // 2. Munculkan beberapa emotikon (🤍 dan 🤗) sekaligus
+      const emojis = ["🤗", "🤍"];
+      const amount = 3; // Jumlah emotikon yang keluar sekali klik
+
+      for (let i = 0; i < amount; i++) {
+        const floatingEmoji = document.createElement("div");
+        floatingEmoji.className = "hug-emoji";
+        
+        // Pilih emoji acak antara 🤍 atau 🤗
+        floatingEmoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+        // Tentukan posisi munculnya (sedikit disebar agar tidak bertumpuk)
+        let x = event.clientX ? (event.clientX - 20 + (Math.random() * 40)) : (window.innerWidth / 2);
+        let y = event.clientY ? (event.clientY - 20 + (Math.random() * 40)) : (window.innerHeight / 2);
+
+        floatingEmoji.style.left = x + "px";
+        floatingEmoji.style.top = y + "px";
+        floatingEmoji.style.position = "fixed";
+        floatingEmoji.style.zIndex = "9999";
+
+        document.body.appendChild(floatingEmoji);
+
+        // Hapus emotikon setelah animasinya selesai (2 detik)
+        setTimeout(() => {
+          floatingEmoji.remove();
+        }, 2000);
+      }
     }
 
     function triggerNightModeEnding() {
