@@ -387,11 +387,16 @@
     /* Envelope */
     .envelope-wrapper {
       position: relative;
-      width: 255px;
-      height: 165px;
+      width: min(255px, 86vw);
+      height: 175px;
       margin: 27px auto 18px;
       cursor: pointer;
       perspective: 1000px;
+      transition: height .6s ease;
+    }
+
+    .envelope-wrapper.open {
+      height: 390px;
     }
 
     .envelope {
@@ -419,20 +424,23 @@
 
     .letter {
       position: absolute;
-      bottom: 0;
+      top: 10px;
       left: 5%;
       width: 90%;
-      height: 90%;
+      min-height: 150px;
+      max-height: none;
       background: white;
       color: #333;
-      border-radius: 8px;
-      padding: 16px;
+      border-radius: 10px;
+      padding: 18px;
       font-size: .82rem;
+      line-height: 1.7;
       text-align: left;
-      box-shadow: 0 0 10px rgba(0,0,0,.10);
+      box-shadow: 0 0 12px rgba(0,0,0,.12);
       opacity: 0;
       z-index: 2;
-      transition: transform .8s ease, opacity .8s ease;
+      transform: translateY(35px);
+      transition: transform .75s ease, opacity .65s ease, top .75s ease;
     }
 
     .envelope-wrapper.open .envelope::before {
@@ -441,9 +449,10 @@
     }
 
     .envelope-wrapper.open .letter {
-      transform: translateY(-105px);
+      top: 150px;
+      transform: translateY(0);
       opacity: 1;
-      z-index: 5;
+      z-index: 6;
     }
 
     /* Candle */
@@ -564,6 +573,10 @@
         justify-content: flex-start;
         padding-top: 18px;
         padding-bottom: 18px;
+      }
+
+      #page-opening {
+        justify-content: center;
       }
 
       .message-box {
@@ -889,7 +902,7 @@
     ========================================================== */
 
     const typeText =
-      "Hai sayang...\\nAku punya sesuatu spesial buat kamu hari ini...";
+      "Hai sayang...\nAku punya sesuatu spesial buat kamu hari ini...";
 
     const memoryPhotos = [
       { src: "foto2.jpeg", caption: "Awal kenal: masih malu-malu 😆" },
@@ -1248,7 +1261,7 @@
       const ptc = document.createElement("div");
       ptc.classList.add("particle");
 
-      const shapes = ["🌸", "✨", "🫧", "❤️", "💖"];
+      const shapes = ["✦", "✧", "♡", "♥", "·"];
       ptc.innerText = shapes[Math.floor(Math.random() * shapes.length)];
 
       ptc.style.left = Math.random() * 95 + "vw";
