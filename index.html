@@ -245,6 +245,8 @@
       margin: 14px auto 6px;
       width: 100%;
       max-width: 360px;
+      /* Tambahan padding bottom agar foto terbawah tidak tertutup tombol terlalu mepet */
+      padding-bottom: 15px; 
     }
 
     .heart-row {
@@ -395,7 +397,6 @@
       transition: height .6s ease, margin .6s ease;
     }
 
-    /* PERBAIKAN 1: Tinggi amplop dinaikkan agar teks petunjuk di bawah tidak tertimpa */
     .envelope-wrapper.open {
       height: 550px; 
       margin-bottom: 30px;
@@ -637,7 +638,7 @@
       </h1>
 
       <img
-        src="foto1.jpeg"
+        src="Foto1.jpeg"
         alt="Foto Intan"
         style="width:min(175px,55vw);border-radius:15px;margin:8px auto 12px;border:4px solid white;box-shadow:0 8px 20px rgba(0,0,0,.18);"
       />
@@ -656,7 +657,7 @@
   </section>
 
   <!-- =========================================================
-        PAGE 3 — MEMORIES
+        PAGE 3 — MEMORIES (18 FOTO BARU)
   ========================================================== -->
   <section class="page" id="page-memories">
     <div class="content">
@@ -668,27 +669,50 @@
       </p>
 
       <div class="heart-grid">
+        <!-- Baris 1 -->
         <div class="heart-row">
-          <img src="foto2.jpeg" class="heart-photo" data-idx="0"
-               alt="Memory 1" onclick="openLightbox(0)">
-          <img src="foto3.jpeg" class="heart-photo" data-idx="1"
-               alt="Memory 2" onclick="openLightbox(1)">
+          <img src="Foto2.jpeg" class="heart-photo" data-idx="0" alt="Memory" onclick="openLightbox(0)">
+          <img src="Foto3.jpeg" class="heart-photo" data-idx="1" alt="Memory" onclick="openLightbox(1)">
         </div>
 
+        <!-- Baris 2 -->
         <div class="heart-row">
-          <img src="foto4.jpeg" class="heart-photo" data-idx="2"
-               alt="Memory 3" onclick="openLightbox(2)">
-          <img src="foto1.jpeg" class="heart-photo center-star" data-idx="3"
-               alt="Memory 4" onclick="openLightbox(3)">
-          <img src="foto5.jpeg" class="heart-photo" data-idx="4"
-               alt="Memory 5" onclick="openLightbox(4)">
+          <img src="Foto4.jpeg" class="heart-photo" data-idx="2" alt="Memory" onclick="openLightbox(2)">
+          <img src="Foto5.jpeg" class="heart-photo center-star" data-idx="3" alt="Memory" onclick="openLightbox(3)">
+          <img src="Foto6.jpeg" class="heart-photo" data-idx="4" alt="Memory" onclick="openLightbox(4)">
         </div>
 
+        <!-- Baris 3 -->
         <div class="heart-row">
-          <img src="foto6.jpeg" class="heart-photo" data-idx="5"
-               alt="Memory 6" onclick="openLightbox(5)">
-          <img src="foto7.jpeg" class="heart-photo" data-idx="6"
-               alt="Memory 7" onclick="openLightbox(6)">
+          <img src="Foto7.jpeg" class="heart-photo" data-idx="5" alt="Memory" onclick="openLightbox(5)">
+          <img src="Foto8.jpeg" class="heart-photo" data-idx="6" alt="Memory" onclick="openLightbox(6)">
+        </div>
+
+        <!-- Baris 4 -->
+        <div class="heart-row">
+          <img src="Foto9.jpeg" class="heart-photo" data-idx="7" alt="Memory" onclick="openLightbox(7)">
+          <img src="Foto10.jpeg" class="heart-photo center-star" data-idx="8" alt="Memory" onclick="openLightbox(8)">
+          <img src="Foto11.jpeg" class="heart-photo" data-idx="9" alt="Memory" onclick="openLightbox(9)">
+        </div>
+
+        <!-- Baris 5 -->
+        <div class="heart-row">
+          <img src="Foto12.jpeg" class="heart-photo" data-idx="10" alt="Memory" onclick="openLightbox(10)">
+          <img src="Foto13.jpeg" class="heart-photo" data-idx="11" alt="Memory" onclick="openLightbox(11)">
+        </div>
+
+        <!-- Baris 6 -->
+        <div class="heart-row">
+          <img src="Foto14.jpeg" class="heart-photo" data-idx="12" alt="Memory" onclick="openLightbox(12)">
+          <img src="Foto15.jpeg" class="heart-photo center-star" data-idx="13" alt="Memory" onclick="openLightbox(13)">
+          <img src="Foto16.jpeg" class="heart-photo" data-idx="14" alt="Memory" onclick="openLightbox(14)">
+        </div>
+
+        <!-- Baris 7 -->
+        <div class="heart-row">
+          <img src="Foto17.jpeg" class="heart-photo" data-idx="15" alt="Memory" onclick="openLightbox(15)">
+          <img src="Foto18.jpeg" class="heart-photo center-star" data-idx="16" alt="Memory" onclick="openLightbox(16)">
+          <img src="Foto19.jpeg" class="heart-photo" data-idx="17" alt="Memory" onclick="openLightbox(17)">
         </div>
       </div>
 
@@ -753,7 +777,6 @@
         Sentuh amplopnya buat buka surat ✨
       </p>
 
-      <!-- PERBAIKAN 2: Tombol disembunyikan pakai style="display: none;" sampai surat diklik -->
       <button class="btn" id="envelope-next-btn" onclick="nextPage()" style="display: none;">
         Masuk ke kejutan 🎂
       </button>
@@ -909,14 +932,26 @@
     const typeText =
       "Haiii sayang...\nAku punya sesuatu yang spesial nihh buat kamu hari ini...";
 
+    // DATA FOTO (FOTO 2 SAMPAI 19)
     const memoryPhotos = [
-      { src: "foto2.jpeg", caption: "Awal kenal: masih malu-malu 😆" },
-      { src: "foto3.jpeg", caption: "Pertama kali jalan bareng ❤️" },
-      { src: "foto4.jpeg", caption: "Momen favorit aku! ✨" },
-      { src: "foto1.jpeg", caption: "Foto paling berkesan di hatiku 💖" },
-      { src: "foto5.jpeg", caption: "Senyum kamu paling manis 🤍" },
-      { src: "foto6.jpeg", caption: "Momen terbaru kita 🥰" },
-      { src: "foto7.jpeg", caption: "Semoga makin banyak kenangan indah! 🌸" }
+      { src: "Foto2.jpeg", caption: "Awal kenal: masih malu-malu 😆" },
+      { src: "Foto3.jpeg", caption: "Pertama kali jalan bareng ❤️" },
+      { src: "Foto4.jpeg", caption: "Momen favorit aku! ✨" },
+      { src: "Foto5.jpeg", caption: "Senyum kamu paling manis 🤍" },
+      { src: "Foto6.jpeg", caption: "Momen lucu kita 🥰" },
+      { src: "Foto7.jpeg", caption: "Selalu suka jalan bareng kamu 🌸" },
+      { src: "Foto8.jpeg", caption: "Tatapannya bikin salting 🤭" },
+      { src: "Foto9.jpeg", caption: "Gaya andalan kita nih ✌️" },
+      { src: "Foto10.jpeg", caption: "Senyum terus ya sayang! 💖" },
+      { src: "Foto11.jpeg", caption: "Momen yang gak akan aku lupa ✨" },
+      { src: "Foto12.jpeg", caption: "Partner in crime 😆" },
+      { src: "Foto13.jpeg", caption: "Selalu bikin hariku berwarna 🌈" },
+      { src: "Foto14.jpeg", caption: "Cantiknya pacar akuuu 🌷" },
+      { src: "Foto15.jpeg", caption: "Momen berharga bareng kamu 📸" },
+      { src: "Foto16.jpeg", caption: "Bahagia itu sederhana, cukup ada kamu ❤️" },
+      { src: "Foto17.jpeg", caption: "Makin hari makin sayang 🥰" },
+      { src: "Foto18.jpeg", caption: "Dunia berasa milik berdua 🌍" },
+      { src: "Foto19.jpeg", caption: "Semoga makin banyak kenangan indah kita ya! 🤍" }
     ];
 
     const reasons = [
@@ -944,7 +979,6 @@
     let lilinSudahDiklik = false;
     let pageHasOpened = false;
 
-    // FUNGSI INI DITAMBAHKAN AGAR TIDAK ERROR SAAT LOAD
     function resetAllStates() {
       currentPage = 0;
       giftClickState = 0;
@@ -1169,126 +1203,123 @@
        ENVELOPE
     ========================================================== */
 
-    // PERBAIKAN 3: Tombol muncul saat amplop ditekan, dan tidak akan hilang walau amplop ditutup
     function openEnvelope() {
       const envelope = document.getElementById("envelope");
       const hint = document.getElementById("envelope-hint");
       const nextBtn = document.getElementById("envelope-next-btn");
 
-      envelope.classList.toggle("open");
+      if (!envelope.classList.contains("open")) {
+        envelope.classList.add("open");
+        hint.style.opacity = "0";
 
-      if (envelope.classList.contains("open")) {
-        hint.innerText = "Suratnya sudah terbuka 🤍 Yuk dibaca...";
-        nextBtn.style.display = "inline-block"; // Munculkan tombol!
-      } else {
-        hint.innerText = "Sentuh amplopnya buat buka surat ✨";
+        setTimeout(() => {
+          nextBtn.style.display = "inline-block";
+          nextBtn.style.animation = "fadeIn 0.5s ease";
+        }, 800);
       }
     }
 
     /* =========================================================
-       BIRTHDAY SURPRISE
+       SURPRISE
     ========================================================== */
 
     function lightCandle() {
-      if (lilinSudahDiklik) return;
-
       lilinSudahDiklik = true;
-
-      bgm.pause();
-      bgm.currentTime = 0;
-
-      bgmKejutan.currentTime = 0;
-      bgmKejutan.play().catch(() => {});
-
       document.getElementById("step-candle").style.display = "none";
       document.getElementById("step-birthday").style.display = "block";
 
-      spawnParticles("🎉", 42);
-      spawnParticles("✨", 24);
+      bgm.pause();
+      bgm.currentTime = 0;
+      bgmKejutan.play().catch(() => {});
+
+      spawnParticles("🎉", 40);
+      spawnParticles("✨", 30);
     }
 
     function showGift() {
       document.getElementById("step-birthday").style.display = "none";
       document.getElementById("step-gift").style.display = "block";
-
-      giftClickState = 0;
-      resetGiftUI();
     }
-
-    /* =========================================================
-       GIFT & OTHERS
-    ========================================================== */
 
     function handleGiftClick() {
       const box = document.getElementById("gift-box-el");
-      const statusText = document.getElementById("gift-status-text");
+      const status = document.getElementById("gift-status-text");
 
-      if (giftClickState === 0) {
-        box.classList.add("shake");
-        statusText.innerText = "Hihihi... satu kali lagi untuk membuka! 🎁";
-        giftClickState = 1;
+      giftClickState++;
 
-        setTimeout(() => {
-          box.classList.remove("shake");
-        }, 500);
-      } else {
+      box.classList.add("shake");
+      setTimeout(() => box.classList.remove("shake"), 500);
+
+      if (giftClickState === 1) {
+        status.innerText = "Wah sedikit lagi terbuka! Sentuh lagi... 🤭";
+      } else if (giftClickState === 2) {
+        status.innerText = "Sekali lagi sayaangg! ✨";
+      } else if (giftClickState === 3) {
         document.getElementById("unopened-gift").style.display = "none";
         document.getElementById("opened-gift").style.display = "block";
-        spawnParticles("💖", 30);
+        spawnParticles("💖", 35);
       }
     }
 
-    function virtualHug(event) {
-      const status = document.getElementById("hug-status");
+    function virtualHug(e) {
+      const rect = e.target.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top;
 
-      // Teks berubah secara acak setiap kali diklik
-      const messages = [
-        "Dipeluk balik! 🤗🤍", 
-        "Pelukkk lagiii! 🤍", 
-        "Uhh gemesnyaa! 🤗", 
-        "Sayang kamuu! 🤍✨",
-        "Peluk jauhh! 🤗❤️"
-      ];
-      status.innerText = messages[Math.floor(Math.random() * messages.length)];
+      const emoji = document.createElement("div");
+      emoji.innerText = "🫂";
+      emoji.className = "hug-emoji";
+      emoji.style.left = `${x - 24}px`;
+      emoji.style.top = `${y}px`;
 
-      // Munculkan beberapa emotikon (🤍 dan 🤗) sekaligus
-      const emojis = ["🤗", "🤍"];
-      const amount = 3; 
+      document.body.appendChild(emoji);
 
-      for (let i = 0; i < amount; i++) {
-        const floatingEmoji = document.createElement("div");
-        floatingEmoji.className = "hug-emoji";
-        
-        floatingEmoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      document.getElementById("hug-status").innerText = "Peluk jauhh! 🤗❤️";
 
-        let x = event.clientX ? (event.clientX - 20 + (Math.random() * 40)) : (window.innerWidth / 2);
-        let y = event.clientY ? (event.clientY - 20 + (Math.random() * 40)) : (window.innerHeight / 2);
-
-        floatingEmoji.style.left = x + "px";
-        floatingEmoji.style.top = y + "px";
-        floatingEmoji.style.position = "fixed";
-        floatingEmoji.style.zIndex = "9999";
-
-        document.body.appendChild(floatingEmoji);
-
-        setTimeout(() => {
-          floatingEmoji.remove();
-        }, 2000);
-      }
+      setTimeout(() => {
+        emoji.remove();
+        document.getElementById("hug-status").innerText = "";
+      }, 2000);
     }
+
+    /* =========================================================
+       ENDING
+    ========================================================== */
 
     function triggerNightModeEnding() {
       document.body.classList.add("night-mode");
-      const lines = document.querySelectorAll("#page-ending .fade-ending");
+      const lines = document.querySelectorAll(".fade-ending");
+
       lines.forEach((line, i) => {
+        line.classList.remove("show");
         setTimeout(() => {
           line.classList.add("show");
-        }, i * 800 + 500);
+        }, i * 900 + 300);
       });
     }
 
     function restartApp() {
-      location.reload();
+      document.body.classList.remove("night-mode");
+
+      bgmKejutan.pause();
+      bgmKejutan.currentTime = 0;
+      bgm.play().catch(() => {});
+
+      resetGiftUI();
+      lilinSudahDiklik = false;
+
+      document.getElementById("step-candle").style.display = "block";
+      document.getElementById("step-birthday").style.display = "none";
+      document.getElementById("step-gift").style.display = "none";
+
+      const envelope = document.getElementById("envelope");
+      envelope.classList.remove("open");
+      document.getElementById("envelope-hint").style.opacity = "1";
+      document.getElementById("envelope-next-btn").style.display = "none";
+
+      resetReason();
+
+      showPage(1);
     }
   </script>
 </body>
