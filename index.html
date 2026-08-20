@@ -236,7 +236,7 @@
       transform: translateY(0);
     }
 
-    /* Memories */
+    /* Memories Grid */
     .heart-grid {
       display: flex;
       flex-direction: column;
@@ -385,29 +385,29 @@
       font-size: 1.15rem !important;
     }
 
-    /* Envelope */
-    .envelope-wrapper {
-      position: relative;
-      width: min(255px, 86vw);
-      height: 175px;
-      margin: 27px auto 18px;
-      cursor: pointer;
-      perspective: 1000px;
-      transition: height .6s ease, margin .6s ease;
+    /* Envelope & Letter */
+    .envelope-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 110px 0 20px 0;
+      transition: margin .6s ease;
     }
 
-    .envelope-wrapper.open {
-      height: 550px; 
-      margin-bottom: 30px;
+    .envelope-wrapper {
+      position: relative;
+      width: min(280px, 85vw);
+      height: 175px;
+      cursor: pointer;
+      perspective: 1000px;
     }
 
     .envelope {
-      width: 100%;
-      height: 175px;
+      position: absolute;
+      inset: 0;
       background: #e94f7c;
       border-radius: 10px;
-      position: absolute;
-      box-shadow: 0 10px 20px rgba(0,0,0,.20);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
       z-index: 3;
     }
 
@@ -416,9 +416,9 @@
       position: absolute;
       top: 0;
       left: 0;
-      border-top: 82px solid #ff70a8;
-      border-left: 127px solid transparent;
-      border-right: 127px solid transparent;
+      border-top: 85px solid #ff70a8;
+      border-left: 140px solid transparent;
+      border-right: 140px solid transparent;
       transform-origin: top;
       transition: transform .6s ease;
       z-index: 4;
@@ -429,32 +429,32 @@
       top: 10px;
       left: 5%;
       width: 90%;
-      min-height: 150px;
-      max-height: none;
       background: white;
       color: #333;
       border-radius: 10px;
       padding: 18px;
-      font-size: .82rem;
-      line-height: 1.7;
+      font-size: .83rem;
+      line-height: 1.6;
       text-align: left;
-      box-shadow: 0 0 12px rgba(0,0,0,.12);
+      box-shadow: 0 0 12px rgba(0,0,0,.15);
       opacity: 0;
       z-index: 2;
-      transform: translateY(35px);
-      transition: transform .75s ease, opacity .65s ease, top .75s ease;
+      transform: translateY(20px);
+      transition: transform .75s ease, opacity .65s ease;
+      pointer-events: none;
     }
 
+    /* State Amplop Terbuka */
     .envelope-wrapper.open .envelope::before {
       transform: rotateX(180deg);
       z-index: 1;
     }
 
     .envelope-wrapper.open .letter {
-      top: 120px; 
-      transform: translateY(0);
+      transform: translateY(-135px);
       opacity: 1;
       z-index: 6;
+      pointer-events: auto;
     }
 
     /* Candle */
@@ -569,7 +569,7 @@
       transform: translateY(0);
     }
 
-    /* Mobile */
+    /* Mobile Responsive */
     @media (max-height: 700px) {
       .page {
         justify-content: flex-start;
@@ -656,7 +656,7 @@
   </section>
 
   <!-- =========================================================
-        PAGE 3 — MEMORIES (18 FOTO BARU)
+        PAGE 3 — MEMORIES (18 FOTO)
   ========================================================== -->
   <section class="page" id="page-memories">
     <div class="content">
@@ -668,46 +668,39 @@
       </p>
 
       <div class="heart-grid">
-        <!-- Baris 1 -->
         <div class="heart-row">
           <img src="Foto2.jpeg" class="heart-photo" data-idx="0" alt="Memory" onclick="openLightbox(0)">
           <img src="Foto3.jpeg" class="heart-photo" data-idx="1" alt="Memory" onclick="openLightbox(1)">
         </div>
 
-        <!-- Baris 2 -->
         <div class="heart-row">
           <img src="Foto4.jpeg" class="heart-photo" data-idx="2" alt="Memory" onclick="openLightbox(2)">
           <img src="Foto5.jpeg" class="heart-photo center-star" data-idx="3" alt="Memory" onclick="openLightbox(3)">
           <img src="Foto6.jpeg" class="heart-photo" data-idx="4" alt="Memory" onclick="openLightbox(4)">
         </div>
 
-        <!-- Baris 3 -->
         <div class="heart-row">
           <img src="Foto7.jpeg" class="heart-photo" data-idx="5" alt="Memory" onclick="openLightbox(5)">
           <img src="Foto8.jpeg" class="heart-photo" data-idx="6" alt="Memory" onclick="openLightbox(6)">
         </div>
 
-        <!-- Baris 4 -->
         <div class="heart-row">
           <img src="Foto9.jpeg" class="heart-photo" data-idx="7" alt="Memory" onclick="openLightbox(7)">
           <img src="Foto10.jpeg" class="heart-photo center-star" data-idx="8" alt="Memory" onclick="openLightbox(8)">
           <img src="Foto11.jpeg" class="heart-photo" data-idx="9" alt="Memory" onclick="openLightbox(9)">
         </div>
 
-        <!-- Baris 5 -->
         <div class="heart-row">
           <img src="Foto12.jpeg" class="heart-photo" data-idx="10" alt="Memory" onclick="openLightbox(10)">
           <img src="Foto13.jpeg" class="heart-photo" data-idx="11" alt="Memory" onclick="openLightbox(11)">
         </div>
 
-        <!-- Baris 6 -->
         <div class="heart-row">
           <img src="Foto14.jpeg" class="heart-photo" data-idx="12" alt="Memory" onclick="openLightbox(12)">
           <img src="Foto15.jpeg" class="heart-photo center-star" data-idx="13" alt="Memory" onclick="openLightbox(13)">
           <img src="Foto16.jpeg" class="heart-photo" data-idx="14" alt="Memory" onclick="openLightbox(14)">
         </div>
 
-        <!-- Baris 7 -->
         <div class="heart-row">
           <img src="Foto17.jpeg" class="heart-photo" data-idx="15" alt="Memory" onclick="openLightbox(15)">
           <img src="Foto18.jpeg" class="heart-photo center-star" data-idx="16" alt="Memory" onclick="openLightbox(16)">
@@ -724,7 +717,7 @@
   </section>
 
   <!-- =========================================================
-        PAGE 4 — I Love You
+        PAGE 4 — I LOVE YOU (REASONS)
   ========================================================== -->
   <section class="page" id="page-reasons">
     <div class="content">
@@ -752,23 +745,26 @@
   </section>
 
   <!-- =========================================================
-        PAGE 5 — SURAT
+        PAGE 5 — SURAT & AMPLOP (REVISI)
   ========================================================== -->
   <section class="page" id="page-letter">
     <div class="content">
       <div class="mini-title">💌 Surat Untukmu</div>
       <h2>Ada pesan nih!</h2>
 
-      <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
-        <div class="envelope"></div>
+      <!-- Amplop Wadah -->
+      <div class="envelope-container">
+        <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
+          <div class="envelope"></div>
 
-        <div class="letter">
-          <b>Hai Sayang,</b><br><br>
+          <div class="letter">
+            <b>Hai Sayang,</b><br><br>
 
-          Semoga di usia yang baru ini, kamu makin disayang banyak orang, makin dewasa, dan selalu dikelilingi oleh hal-hal baik serta kebahagiaan yang nggak ada habisnya. 
-          Tetap jadi Intan yang aku kenal dan aku sayang ya. 🤍<br><br>
+            Semoga di usia yang baru ini, kamu makin disayang banyak orang, makin dewasa, dan selalu dikelilingi oleh hal-hal baik serta kebahagiaan yang nggak ada habisnya. 
+            Tetap jadi Intan yang aku kenal dan aku sayang ya. 🤍<br><br>
 
-          Dan Semoga kita bisa terus sama-sama, bikin lebih banyak cerita lucu dan kenangan indah untuk diceritakan nanti. I love you! ❤️
+            Dan Semoga kita bisa terus sama-sama, bikin lebih banyak cerita lucu dan kenangan indah untuk diceritakan nanti. I love you! ❤️
+          </div>
         </div>
       </div>
 
@@ -776,6 +772,7 @@
         Sentuh amplopnya buat buka surat ✨
       </p>
 
+      <!-- Tombol Lanjut Terpisah Dari Amplop -->
       <button class="btn" id="envelope-next-btn" onclick="nextPage()" style="display: none;">
         Masuk ke kejutan 🎂
       </button>
@@ -787,7 +784,7 @@
   ========================================================== -->
   <section class="page" id="page-surprise">
 
-    <!-- Step 1 -->
+    <!-- Step 1: Lilin -->
     <div class="content" id="step-candle">
       <div class="mini-title">🕯️ Hampir selesai sayangg...</div>
 
@@ -800,7 +797,7 @@
       </p>
     </div>
 
-    <!-- Step 2 -->
+    <!-- Step 2: Ucapan Ulang Tahun -->
     <div class="content" id="step-birthday" style="display:none;">
       <div class="mini-title">🎉 Yeyyyy!</div>
 
@@ -822,7 +819,7 @@
       </button>
     </div>
 
-    <!-- Step 3 -->
+    <!-- Step 3: Kado & Virtual Hug -->
     <div class="content" id="step-gift" style="display:none;">
       <div class="mini-title">🎁 Hadiah Untukmu</div>
 
@@ -908,7 +905,7 @@
   </section>
 
   <!-- =========================================================
-        LIGHTBOX
+        LIGHTBOX MODAL
   ========================================================== -->
   <div id="lightbox">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
@@ -925,7 +922,7 @@
 
   <script>
     /* =========================================================
-        DATA
+        DATA & TEKS
     ========================================================== */
 
     const typeText =
@@ -962,7 +959,7 @@
     ];
 
     /* =========================================================
-        STATE
+        STATE & VARIABEL
     ========================================================== */
 
     const pages = document.querySelectorAll(".page");
@@ -986,7 +983,7 @@
       const unopened = document.getElementById("unopened-gift");
       const opened = document.getElementById("opened-gift");
       const statusText = document.getElementById("gift-status-text");
-      
+
       if (box) box.classList.remove("shake");
       if (unopened) unopened.style.display = "block";
       if (opened) opened.style.display = "none";
@@ -1011,7 +1008,7 @@
     }
 
     /* =========================================================
-        OPENING
+        INIT & TYPING EFFECT
     ========================================================== */
 
     window.addEventListener("load", () => {
@@ -1045,7 +1042,7 @@
     }
 
     /* =========================================================
-        PAGE NAVIGATION
+        NAVIGASI HALAMAN
     ========================================================== */
 
     function showPage(index) {
@@ -1174,7 +1171,7 @@
     }
 
     /* =========================================================
-        ENVELOPE (TOGGLE BUKA/TUTUP)
+        LOGIKA AMPLOP & SURAT (REVISI TOGGLE BUKA/TUTUP)
     ========================================================== */
 
     function openEnvelope() {
@@ -1182,6 +1179,7 @@
       const nextBtn = document.getElementById("envelope-next-btn");
       const hint = document.getElementById("envelope-hint");
 
+      // Toggle kelas 'open'
       const isOpen = envelope.classList.toggle("open");
 
       if (isOpen) {
@@ -1265,7 +1263,7 @@
     function restartApp() {
       resetAllStates();
       lilinSudahDiklik = false;
-      
+
       bgmKejutan.pause();
       bgmKejutan.currentTime = 0;
       bgm.currentTime = 0;
